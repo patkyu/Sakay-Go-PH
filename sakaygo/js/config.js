@@ -28,5 +28,5 @@ window.SAKAYGO_CONFIG = {
   osrmUrl: "https://router.project-osrm.org",
 
   pointsPerVerifiedRoute: 50,
-  contactEmail: "support@example.com",
+  contactEmail: "work.patkyu@gmail.com",
 };
