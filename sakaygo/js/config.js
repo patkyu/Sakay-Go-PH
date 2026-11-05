@@ -13,7 +13,7 @@
  *   fare-matrix API or a JSON file you update when LTFRB/LGUs issue new fares.
  */
 window.SAKAYGO_CONFIG = {
-  backend: "local",
+  backend: "supabase",
   supabaseUrl: "https://qyjbqgaqfsmsmxiwpfak.supabase.co",
   supabaseAnonKey: "sb_publishable_p-ytE8qAFDOrDjZ7TRWi0A_9yYbTber",
 
