@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SakayGo</title>
+  <meta name="description" content="Estimate jeepney, bus and tricycle fares, plan trips, and find commuter-tested routes across the Philippines.">
+  <meta name="theme-color" content="#12355b">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash.
+    (function () {
+      var t = null; try { t = localStorage.getItem("sg_theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#home" aria-label="SakayGo home"><span class="logo-mark">SG</span>SakayGo</a>
+      <nav class="topnav" id="topnav" aria-label="Main">
+        <a href="#fare" data-nav="fare">Fare calculator</a>
+        <a href="#planner" data-nav="planner">Trip planner</a>
+        <a href="#routes" data-nav="routes">Routes</a>
+        <a href="#alerts" data-nav="alerts">Alerts</a>
+        <a href="#leaderboard" data-nav="leaderboard">Leaderboard</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode"></button>
+        <span id="accountSlot"></span>
+      </div>
+    </div>
+  </header>
+  <div class="demo-banner" id="demoBanner" hidden></div>
+
+  <main id="app" tabindex="-1"><div class="loading">Loading SakayGo…</div></main>
+
+  <footer class="site">
+    <span>© SakayGo</span>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#saved">Saved routes</a>
+    <a href="#recent">Recent calculations</a>
+    <a href="#submit">Submit a route</a>
+    <span id="fareSource"></span>
+  </footer>
+
+  <nav class="tabbar" id="tabbar" aria-label="Main">
+    <a href="#home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a href="#fare" data-nav="fare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2"/></svg>Fares</a>
+    <a href="#planner" data-nav="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Planner</a>
+    <a href="#routes" data-nav="routes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>Routes</a>
+    <a href="#alerts" data-nav="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>Alerts</a>
+  </nav>
+
+  <div class="toast-wrap" id="toasts" aria-live="polite"></div>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script>
+    if (window.SAKAYGO_CONFIG.backend === "supabase") {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"><\/script>');
+    }
+  </script>
+  <script src="js/fare-matrices.js"></script>
+  <script src="js/fares.js"></script>
+  <script src="js/maps.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
