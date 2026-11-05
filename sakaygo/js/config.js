@@ -14,8 +14,8 @@
  */
 window.SAKAYGO_CONFIG = {
   backend: "local",
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://qyjbqgaqfsmsmxiwpfak.supabase.co",
+  supabaseAnonKey: "sb_publishable_p-ytE8qAFDOrDjZ7TRWi0A_9yYbTber",
 
   fareMatrixUrl: "",
 
